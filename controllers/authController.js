@@ -32,7 +32,7 @@ exports.loginUser = async(req,res)=>{
     if(!user) return res.status(400).send("User not exists")
       const match = bcrypt.compare(password,user.password)
     if(!match) return res.status(400).send("invalid Password")
-    const token = jwt.sign({id:user.id,role:user.role},process.env.JWT,{expiresIn:"2h"})
+    const token = jwt.sign({id:user.id,role:user.role},process.env.JWT,{expiresIn:"8h"})
       res.json({token})
   } catch (error) {
     res.status(500).send("server error:",error)

@@ -5,7 +5,8 @@ const verifyToken=(req,res,next)=>{
   if(!token) return res.status(400).json("Acess Denied")
   try{
       const verify = jwt.verify(token,process.env.JWT)
-      //console.log(verify)
+      // console.log(verify)
+      // console.log(req.user)
       req.user = verify
       next()
   }
